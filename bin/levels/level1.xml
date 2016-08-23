@@ -1,7 +1,8 @@
-<level next="level2.xml">
+<level next="level2.xml" width="1024" height="786">
 	<enemies>
 		<enemy x="50" y="50" firespeed="2000" thrustpowerx="0.2" thrustpowery="0.2">assets/images/enemy.png</enemy>
 		<enemy x="250" y="50" firespeed="2000" thrustpowerx="0.2" thrustpowery="0.2">assets/images/enemy.png</enemy>
 		<enemy x="450" y="50" firespeed="2000" thrustpowerx="0.2" thrustpowery="0.2">assets/images/enemy.png</enemy>
 	</enemies>
+	<player x="400" y="700"></player>
 </level>
