@@ -20,9 +20,5 @@ void si::controller::PlayerController::update () {
 		this->target->setThrustX(0);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		this->target->fireing = true;
-	} else {
-		this->target->fireing = false;
-	}
+	this->target->fireing = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 }
