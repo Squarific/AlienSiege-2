@@ -33,10 +33,7 @@ int main () {
 	si::view::Screen screen(mainGame);
 	mainGame->registerObserver(std::shared_ptr<si::view::Screen>(&screen));
 
-	// Read the first level from xml
-	si::XmlParser parser = si::XmlParser();
-	parser.fillGame("levels/level1.xml", *mainGame);
-	mainGame->level = 1;
+	mainGame->load("levels/level1.xml");
 
 	// Run the game as long as our window is open
 	while (screen.window->isOpen()) {
