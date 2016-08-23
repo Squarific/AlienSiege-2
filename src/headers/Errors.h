@@ -23,13 +23,6 @@ namespace si {
 	// File errors
 	class FileException : BaseError {};
 	class TextureFileException : FileException {};
-	class XmlFileException : FileException {};
-
-	// Xml Errors
-	class XMLError : BaseError {};
-	class XMLNoRoot : XMLError {};
-	class XMLBadRoot : XMLError {};
-	class XMLNoEnemies : XMLError {};
 }
 
 #endif /* ERRORS_H */
