@@ -10,5 +10,5 @@
 		<enemy x="250" y="250" firespeed="1000" thrustpowerx="0.5" thrustpowery="0.4">assets/images/enemy.png</enemy>
 		<enemy x="450" y="250" firespeed="1000" thrustpowerx="0.5" thrustpowery="0.4">assets/images/enemy.png</enemy>
 	</enemies>
-	<player x="400" y="700"></player>
+	<player x="400" y="700">assets/images/player.png</player>
 </level>
