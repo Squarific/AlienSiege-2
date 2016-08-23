@@ -55,6 +55,9 @@ namespace si {
 
 			std::vector<int> getWorldSize();
 
+			// Load a given xml file
+			void load(const char* filename);
+
 			// Add the given entity to the game at the beginning
 			// of the next frame
 			void addEntity (std::shared_ptr< Entity > entityPtr);

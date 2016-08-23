@@ -22,6 +22,10 @@ si::model::Game::Game (int x, int y) {
 	this->worldSize = {x, y};
 };
 
+void si::model::Game::load (const char* filename) {
+	
+}
+
 void si::model::Game::update () {
 	int frames = this->stopWatch.getFrames();
 	int calculatedFrames = frames;
