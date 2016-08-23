@@ -38,7 +38,7 @@ namespace si {
 
 		public:
 
-			int level = 1;
+			std::string nextLevelFileName;
 
 			// Load the next xml level
 			void nextLevel();
@@ -56,7 +56,7 @@ namespace si {
 			std::vector<int> getWorldSize();
 
 			// Load a given xml file
-			void load(const char* filename);
+			void loadLevel(std::string filename);
 
 			// Add the given entity to the game at the beginning
 			// of the next frame

@@ -3,7 +3,6 @@
 #include "Screen.h"
 #include "PlayerController.h"
 #include "ControllerCollection.h"
-#include "XmlParser.h"
 
 int main () {
 	// Create the game
@@ -33,7 +32,7 @@ int main () {
 	si::view::Screen screen(mainGame);
 	mainGame->registerObserver(std::shared_ptr<si::view::Screen>(&screen));
 
-	mainGame->load("levels/level1.xml");
+	mainGame->loadLevel(std::string("levels/level1.xml"));
 
 	// Run the game as long as our window is open
 	while (screen.window->isOpen()) {

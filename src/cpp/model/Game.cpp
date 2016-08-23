@@ -7,9 +7,14 @@
 #include "Errors.h"
 #include "Entitys.h"
 #include "StopWatch.h"
-#include "XmlParser.h"
 
 #include <iostream>
+
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+#include <boost/foreach.hpp>
+
+namespace pt = boost::property_tree;
 
 si::model::Game::Game () {
 
@@ -22,8 +27,14 @@ si::model::Game::Game (int x, int y) {
 	this->worldSize = {x, y};
 };
 
-void si::model::Game::load (const char* filename) {
-	
+void si::model::Game::loadLevel (std::string filename) {
+    pt::ptree tree;
+    pt::read_xml(filename, tree);
+
+    this->nextLevelFileName = tree.get("level.<xmlattr>.next", std::string());
+
+    // Load all entities
+    
 }
 
 void si::model::Game::update () {
@@ -132,15 +143,7 @@ void si::model::Game::_handleFinish () {
 }
 
 void si::model::Game::nextLevel () {
-	this->level++;
-
-	if (this->level > 3) return;
-
-	si::XmlParser parser = si::XmlParser();
-	parser.fillGame((std::string("levels/level") +
-	                std::to_string(this->level) +
-	                std::string(".xml")).c_str(),
-	                *this);
+	this->loadLevel(this->nextLevelFileName);
 }
 
 void si::model::Game::addEntity (std::shared_ptr< Entity > entityPtr) {
