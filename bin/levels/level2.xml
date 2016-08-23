@@ -1,4 +1,4 @@
-<level>
+<level next="level3.xml">
 	<enemies>
 		<enemy x="50" y="50" firespeed="1400" thrustpowerx="0.3" thrustpowery="0.3">assets/images/enemy.png</enemy>
 		<enemy x="250" y="50" firespeed="1400" thrustpowerx="0.3" thrustpowery="0.3">assets/images/enemy.png</enemy>
