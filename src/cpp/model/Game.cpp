@@ -28,8 +28,14 @@ si::model::Game::Game (int x, int y) {
 };
 
 void si::model::Game::loadLevel (std::string filename) {
+	std::cout << "Loading level " << filename << std::endl;
+
 	pt::ptree tree;
-	pt::read_xml(filename, tree);
+	try {
+		pt::read_xml(filename, tree);
+	} catch(std::exception const&  error) {
+		std::cerr << "Can't load player file '" << filename << "'. Error: " << error.what();
+	}
 
 	this->nextLevelFileName = tree.get("level.<xmlattr>.next", std::string());
 
@@ -43,6 +49,8 @@ void si::model::Game::loadLevel (std::string filename) {
 		const pt::ptree& attributes = v.second.get_child("<xmlattr>", emptyTree);
 		this->_loadEnemy(v.second.data(), attributes);
 	}
+
+	std::cout << "Level " << filename << " loaded" << std::endl;
 }
 
 void si::model::Game::_loadEnemy (std::string texture, const pt::ptree& attributes) {
