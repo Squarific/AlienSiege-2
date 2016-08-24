@@ -9,8 +9,7 @@ int main () {
 	si::model::Game* mainGame = new si::model::Game();
 
 	// Create our player
-	si::Ship* playerShip = new si::Ship("./assets/images/player.png");
-	playerShip->setPosition(400, 700);
+	si::Ship* playerShip = new si::Ship("player.xml", true);
 
 	// Add him to the game
 	std::shared_ptr< si::Ship > player = std::shared_ptr< si::Ship >(playerShip);

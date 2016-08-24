@@ -4,12 +4,14 @@
 
 #include <iostream>
 
-si::Entity::Entity () {
-	this->applyTexture("assets/image/noimg.png");
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+#include <boost/foreach.hpp>
 
-	// This is probably unexpected behaviour as making an entity without sprite
-	// makes little sens, so we'll throw an exception
-	throw NoTextureArgument();
+namespace pt = boost::property_tree;
+
+si::Entity::Entity () {
+	this->applyTexture("./assets/images/noimg.png");
 }
 
 si::Entity::Entity (std::string textureFileName) {
@@ -30,6 +32,8 @@ void si::Entity::applyTexture (std::string textureFileName) {
 
 	this->textureFileName = textureFileName;
 	this->texture.setSmooth(true);
+
+	this->sprite = sf::Sprite();
 	this->sprite.setTexture(this->texture);
 
 	sf::FloatRect bounds = this->sprite.getLocalBounds();
@@ -103,7 +107,23 @@ si::Ship::Ship () {
 }
 
 si::Ship::Ship (std::string textureFileName) : si::Entity::Entity(textureFileName) {
+	
+}
 
+si::Ship::Ship (std::string xmlFile, bool xml) : si::Entity::Entity() {
+	pt::ptree tree;
+
+	try {
+		pt::read_xml(xmlFile, tree);
+	} catch(std::exception const&  error) {
+		std::cerr << "Can't load player file '" << xmlFile << "'. Error: " << error.what();
+	}
+
+	this->applyTexture(tree.get("player", std::string("./assets/images/noimg.png")));
+	this->setPosition(
+		tree.get("player.<xmlattr>.x", 0),
+		tree.get("player.<xmlattr>.y", 0)
+	);
 }
 
 void si::Ship::executeCollisionUsingMeOn (si::EntityBase& with, si::model::Game& game) {

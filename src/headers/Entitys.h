@@ -124,6 +124,7 @@ namespace si {
 		friend class EnemyShip;
 		Ship();
 		Ship(std::string textureFileName);
+		Ship(std::string xmlFile, bool xml);
 
 		// Set the thrust of the ship in ratio (0 = no thrust, 1 = full thrust)
 		// 2 = double thrust, negative values are in the opposite direction
