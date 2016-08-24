@@ -124,6 +124,8 @@ si::Ship::Ship (std::string xmlFile, bool xml) : si::Entity::Entity() {
 		tree.get("player.<xmlattr>.x", 0),
 		tree.get("player.<xmlattr>.y", 0)
 	);
+
+	this->bulletTexture = tree.get("player.<xmlattr>.bullettexture", std::string("assets/images/laser.png"));
 }
 
 void si::Ship::executeCollisionUsingMeOn (si::EntityBase& with, si::model::Game& game) {
@@ -160,7 +162,7 @@ void si::Ship::update (int deltaTime, si::model::Game& game) {
 	if (this->fireing && this->_msSinceLastBullet > this->_fireSpeed) {
 		std::shared_ptr< si::Bullet > bullet =
 			std::shared_ptr< si::Bullet >(
-				new Bullet("./assets/images/laser.png"));
+				new Bullet(this->bulletTexture));
 
 		bullet->setPosition(this->position.at(0), this->position.at(1));
 		bullet->setSpeed(0, -0.5);

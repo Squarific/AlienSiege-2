@@ -18,14 +18,18 @@ namespace pt = boost::property_tree;
 
 si::model::Game::Game () {
 
-};
+}
 
 si::model::Game::Game (int x, int y) {
 	if (x < 1) throw new WorldSizeTooSmallError();
 	if (y < 1) throw new WorldSizeTooSmallError();
 
 	this->worldSize = {x, y};
-};
+}
+
+si::model::Game::Game (std::string xmlFile) {
+	
+}
 
 void si::model::Game::loadLevel (std::string filename) {
 	std::cout << "Loading level " << filename << std::endl;
@@ -70,6 +74,8 @@ void si::model::Game::_loadEnemy (std::string texture, const pt::ptree& attribut
 	enemy->setPosition(x, y);
 	enemy->setFireSpeed(firespeed);
 	enemy->setMaxThrust(thrustpowerx, thrustpowery);
+	enemy->bounceOffset = attributes.get("bounceoffset", 20);
+	enemy->bulletTexture = attributes.get("bullettexture", std::string("assets/images/laser.png"));
 
 	this->addEntity(enemy);
 }

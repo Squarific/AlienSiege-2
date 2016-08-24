@@ -126,6 +126,8 @@ namespace si {
 		Ship(std::string textureFileName);
 		Ship(std::string xmlFile, bool xml);
 
+		std::string bulletTexture;
+
 		// Set the thrust of the ship in ratio (0 = no thrust, 1 = full thrust)
 		// 2 = double thrust, negative values are in the opposite direction
 		// The ship never goes faster than the thrustPower so giving anything
@@ -152,6 +154,8 @@ namespace si {
 	public:
 		EnemyShip();
 		EnemyShip(std::string textureFileName);
+
+		int bounceOffset = 0;
 
 		virtual bool isEnemy() {return true;};
 

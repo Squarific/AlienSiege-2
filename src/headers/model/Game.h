@@ -53,6 +53,7 @@ namespace si {
 
 			Game();
 			Game(int x, int y);
+			Game(std::string xmlFile);
 
 			// Update the world
 			void update();

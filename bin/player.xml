@@ -1,1 +1,1 @@
-<player x="400" y="700">assets/images/player.png</player>
+<player x="400" y="700" bullettexture="./assets/images/laser.png">assets/images/player.png</player>
