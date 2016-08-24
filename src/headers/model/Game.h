@@ -9,6 +9,8 @@
 
 #include <boost/property_tree/ptree.hpp>
 
+namespace pt = boost::property_tree;
+
 namespace si {
 	namespace model {
 		class Game : Observable {

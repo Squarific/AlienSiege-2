@@ -37,7 +37,7 @@ void si::model::Game::loadLevel (std::string filename) {
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child("level.enemies")) {
 		pt::ptree emptyTree;
 		const pt::ptree& attributes = v.second.get_child("<xmlattr>", emptyTree);
-		this->_loadEntity(v.data(), attributes);
+		this->_loadEnemy(v.second.data(), attributes);
 	}
 }
 
