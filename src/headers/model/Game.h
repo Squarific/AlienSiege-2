@@ -7,6 +7,8 @@
 #include "Observers.h"
 #include "StopWatch.h"
 
+#include <boost/property_tree/ptree.hpp>
+
 namespace si {
 	namespace model {
 		class Game : Observable {
@@ -29,6 +31,9 @@ namespace si {
 			void _handleRemoveObjects();
 			void _handleCollisions();
 			void _handleFinish();
+
+			// Parsing functions
+			void _loadEnemy (std::string texture, const pt::ptree& attributes);
 
 			// This is the amount of times we have used more times to calculate
 			// the frames than the frames were long, this means we are going

@@ -28,13 +28,38 @@ si::model::Game::Game (int x, int y) {
 };
 
 void si::model::Game::loadLevel (std::string filename) {
-    pt::ptree tree;
-    pt::read_xml(filename, tree);
+	pt::ptree tree;
+	pt::read_xml(filename, tree);
 
-    this->nextLevelFileName = tree.get("level.<xmlattr>.next", std::string());
+	this->nextLevelFileName = tree.get("level.<xmlattr>.next", std::string());
 
-    // Load all entities
-    
+	// Load all enemies
+	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child("level.enemies")) {
+		pt::ptree emptyTree;
+		const pt::ptree& attributes = v.second.get_child("<xmlattr>", emptyTree);
+		this->_loadEntity(v.data(), attributes);
+	}
+}
+
+void si::model::Game::_loadEnemy (std::string texture, const pt::ptree& attributes) {
+	std::shared_ptr<EnemyShip> enemy =
+		std::shared_ptr<EnemyShip>(
+			new si::EnemyShip(texture));
+
+	double x = attributes.get("x", 50);
+	double y = attributes.get("y", 50);
+
+	int firespeed = attributes.get("firespeed", 500);
+
+	double thrustpowerx = attributes.get("thrustpowerx", 0.2);
+	double thrustpowery = attributes.get("thrustpowery", 0.2);
+
+	enemy->setRotation(180);
+	enemy->setPosition(x, y);
+	enemy->setFireSpeed(firespeed);
+	enemy->setMaxThrust(thrustpowerx, thrustpowery);
+
+	this->addEntity(enemy);
 }
 
 void si::model::Game::update () {
