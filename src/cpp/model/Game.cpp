@@ -33,6 +33,10 @@ void si::model::Game::loadLevel (std::string filename) {
 
 	this->nextLevelFileName = tree.get("level.<xmlattr>.next", std::string());
 
+	int x = tree.get("level.<xmlattr>.width", 1024);
+	int y = tree.get("level.<xmlattr>.height", 786);
+	this->worldSize = {x, y};
+
 	// Load all enemies
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child("level.enemies")) {
 		pt::ptree emptyTree;
