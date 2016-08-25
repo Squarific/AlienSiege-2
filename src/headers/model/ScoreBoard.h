@@ -6,10 +6,6 @@
 
 #include "Observers.h"
 
-#include <boost/property_tree/ptree.hpp>
-
-namespace pt = boost::property_tree;
-
 namespace si {
 	namespace model {
 		using Score = std::pair<std::string, int>;
@@ -21,10 +17,14 @@ namespace si {
 			ScoreBoard();
 			ScoreBoard(std::string xmlFile);
 
+			// Load adds scores from a file to the current list
+			// Save puts the current list in an xml file
+			// No scores will be removed during both of these operations
+			// Save overwrites the current file
 			void load(std::string xmlFile);
 			void save(std::string xmlFile);
 
-			pt::ptree getScores();
+			std::vector<Score> getScores();
 
 			void add(std::string name, int score);
 			void reset();

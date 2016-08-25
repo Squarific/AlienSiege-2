@@ -35,10 +35,21 @@ void si::model::ScoreBoard::load (std::string xmlFile) {
 }
 
 void si::model::ScoreBoard::save (std::string xmlFile) {
-	
+	std::cout << "Saving scores to " << xmlFile << std::endl;
+
+	pt::ptree tree;
+
+	BOOST_FOREACH(const si::model::Score &score, this->scores) {
+		pt::ptree scoreNode;
+		scoreNode.put("<xmlattr>.name", score.first);
+		scoreNode.put("", score.second);
+		tree.add_child("scores.score", scoreNode);
+	}
+
+    pt::write_xml(xmlFile, tree);
 }
 
-pt::ptree si::model::ScoreBoard::getScores () {
+std::vector<si::model::Score> si::model::ScoreBoard::getScores () {
 	
 }
 
