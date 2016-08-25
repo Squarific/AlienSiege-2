@@ -13,7 +13,7 @@ namespace si {
 		virtual void notify (Observable& subject)=0;
 	};
 
-	class Observable {
+	class Observable : Observer {
 	public:
 		Observable(){};
 		std::vector <std::shared_ptr<Observer>> observers;
