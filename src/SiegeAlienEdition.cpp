@@ -7,9 +7,8 @@
 #include "ScoreBoard.h"
 
 int main () {
-	// Create the game
+	// Create the game, scoreboard and menu
 	si::model::Game* mainGame = new si::model::Game("game.xml");
-
 	si::model::ScoreBoard scores = si::model::ScoreBoard("scores.xml");
 
 	// Create our player
@@ -31,15 +30,37 @@ int main () {
 	// And add the controller to our collection
 	controllerCollection.controllers.push_back(playerController);
 
-	// Create a screen
+	// Create a game screen
 	si::view::Screen screen(mainGame);
 	mainGame->registerObserver(std::shared_ptr<si::view::Screen>(&screen));
 
-	mainGame->loadLevel(std::string("levels/level1.xml"));
+	// mainGame->loadLevel(std::string("levels/level1.xml"));
 
-	// Run the game as long as our window is open
+	// Create a state
+	si::model::State generalState = si::model::State();
+
+	// Create a menu controller and view
+	si::controller::Menu menu = si::controller::Menu(generalState, mainGame);
+	si::view::Menu menuView = si::controller::Menu(screen.window);
+
+	// Register our menu controller as an observer
+	menuView.registerObserver(std::shared_ptr<si::view::Menu>(&menuView));
+
+	// Run as long as our window is open
 	while (screen.window->isOpen()) {
-		controllerCollection.update();
-		mainGame->update();
+
+		// If we are in game we will draw that
+		if (generalSate.inGame()) {
+			controllerCollection.update();
+			mainGame->update();
+
+		// Not in game; if the scoreboard is open draw that
+		} else if (state.scoreBoardOpen()) {
+			scoreboardView->draw();
+
+		// If all else fails, just show the menu
+		} else {
+			menuView->draw();
+		}
 	}
 }
