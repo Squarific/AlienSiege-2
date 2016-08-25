@@ -262,7 +262,7 @@ void si::EnemyShip::update (int deltaTime, si::model::Game& game) {
 	if (this->fireing && this->_msSinceLastBullet > this->_fireSpeed) {
 		std::shared_ptr< si::Bullet > bullet =
 			std::shared_ptr< si::Bullet >(
-				new Bullet("./assets/images/laser.png"));
+				new Bullet(this->bulletTexture));
 
 		bullet->setPosition(this->position.at(0), this->position.at(1));
 		bullet->setSpeed(0, 0.5);
