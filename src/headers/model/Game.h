@@ -42,6 +42,7 @@ namespace si {
 			// to lagg behind more and more every frame, if this gets too big
 			// we have to consider increasing the deltaTime
 			int _laggTimes = 0;
+			int laggTimesTreshhold = 0;
 
 		public:
 

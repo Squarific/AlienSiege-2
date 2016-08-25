@@ -28,6 +28,14 @@ si::model::Game::Game (int x, int y) {
 }
 
 si::model::Game::Game (std::string xmlFile) {
+	pt::ptree tree;
+	try {
+		pt::read_xml(xmlFile, tree);
+	} catch(std::exception const& error) {
+		std::cerr << "Can't load game file '" << xmlFile << "'. Error: " << error.what();
+	}
+
+	this->laggTimesTreshhold = tree.get("game.laggtimestreshhold", 5);
 	
 }
 
@@ -37,8 +45,8 @@ void si::model::Game::loadLevel (std::string filename) {
 	pt::ptree tree;
 	try {
 		pt::read_xml(filename, tree);
-	} catch(std::exception const&  error) {
-		std::cerr << "Can't load player file '" << filename << "'. Error: " << error.what();
+	} catch(std::exception const& error) {
+		std::cerr << "Can't load level file '" << filename << "'. Error: " << error.what();
 	}
 
 	this->nextLevelFileName = tree.get("level.<xmlattr>.next", std::string());
@@ -115,7 +123,7 @@ void si::model::Game::update () {
 	}
 
 	// If we lagg behind 5 times, we will raise the deltaTime
-	if (this->_laggTimes > 5) {
+	if (this->_laggTimes > this->laggTimesTreshhold) {
 		std::cerr
 			<< "Your computer was too slow, physics are now less precise"
 			<< std::endl;

@@ -6,7 +6,7 @@
 
 int main () {
 	// Create the game
-	si::model::Game* mainGame = new si::model::Game();
+	si::model::Game* mainGame = new si::model::Game("game.xml");
 
 	// Create our player
 	si::Ship* playerShip = new si::Ship("player.xml", true);
