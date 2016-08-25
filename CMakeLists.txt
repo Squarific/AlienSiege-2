@@ -12,7 +12,7 @@ FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 SET(CMAKE_CXX_FLAGS "-Isrc/headers -Isrc/headers/controllers -Isrc/headers/model -Isrc/headers/view -Wall -std=c++11")
 
 # The source files to compile
-SET(SRC src/SiegeAlienEdition.cpp src/cpp/Entitys.cpp src/cpp/model/Game.cpp src/cpp/model/StopWatch.cpp src/cpp/view/Screen.cpp src/cpp/controllers/PlayerController.cpp src/cpp/controllers/Controller.cpp src/cpp/controllers/ControllerCollection.cpp)
+SET(SRC src/SiegeAlienEdition.cpp src/cpp/Entitys.cpp src/cpp/model/Game.cpp src/cpp/model/StopWatch.cpp src/cpp/view/Screen.cpp src/cpp/controllers/PlayerController.cpp src/cpp/controllers/Controller.cpp src/cpp/controllers/ControllerCollection.cpp src/cpp/model/ScoreBoard.cpp)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)

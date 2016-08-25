@@ -4,9 +4,13 @@
 #include "PlayerController.h"
 #include "ControllerCollection.h"
 
+#include "ScoreBoard.h"
+
 int main () {
 	// Create the game
 	si::model::Game* mainGame = new si::model::Game("game.xml");
+
+	si::model::ScoreBoard scores = si::model::ScoreBoard("scores.xml");
 
 	// Create our player
 	si::Ship* playerShip = new si::Ship("player.xml", true);
