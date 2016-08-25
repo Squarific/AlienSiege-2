@@ -131,7 +131,7 @@ void si::model::Game::update () {
 		this->stopWatch.setDeltaTime(this->stopWatch.getDeltaTime() * 2);
 	}
 
-	this->notifyObservers();
+	this->notifyObservers(std::string("update"));
 }
 
 void si::model::Game::_handleAddObjects () {
@@ -223,11 +223,15 @@ std::shared_ptr<si::Entity> si::model::Game::getEntity (si::Entity* entityPtr) {
 	return std::shared_ptr<si::Entity>();
 }
 
-void si::model::Game::notifyObservers () {
+void si::model::Game::notify (si::Observable& subject, std::string type) {
+
+}
+
+void si::model::Game::notifyObservers (std::string type) {
 	for (auto& observer : this->observers) {
-		observer->notify(*this);
+		observer->notify(*this, type);
 	}
-};
+}
 
 void si::model::Game::registerObserver (std::shared_ptr<si::Observer> observer) {
 	this->observers.push_back(observer);

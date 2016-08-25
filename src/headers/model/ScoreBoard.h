@@ -27,7 +27,8 @@ namespace si {
 			void reset();
 
 			// Notify the observers that something about the subject changed
-			virtual void notifyObservers();
+			virtual void notify(si::Observable& subject, std::string type);
+			virtual void notifyObservers(std::string type);
 			virtual void registerObserver(std::shared_ptr<si::Observer> observer);
 		};
 	}

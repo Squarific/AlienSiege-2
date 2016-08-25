@@ -24,7 +24,7 @@ namespace si {
 			// Draws one frame on the created window
 			void draw();
 
-			virtual void notify (si::Observable& subject);
+			virtual void notify (si::Observable& subject, std::string type);
 		};
 
 	}

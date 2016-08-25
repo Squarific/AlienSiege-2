@@ -43,16 +43,20 @@ pt::ptree si::model::ScoreBoard::getScores () {
 }
 
 void si::model::ScoreBoard::add(std::string name, int score) {
-	this->notifyObservers();
+	this->notifyObservers(std::string("scoreadded"));
 }
 
 void si::model::ScoreBoard::reset () {
 	
 }
 
-void si::model::ScoreBoard::notifyObservers () {
+void si::model::ScoreBoard::notify (si::Observable& subject, std::string type) {
+
+}
+
+void si::model::ScoreBoard::notifyObservers (std::string type) {
 	for (auto& observer : this->observers) {
-		observer->notify(*this);
+		observer->notify(*this, type);
 	}
 };
 

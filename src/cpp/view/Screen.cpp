@@ -40,6 +40,6 @@ void si::view::Screen::draw () {
 	this->window->display();
 }
 
-void si::view::Screen::notify (si::Observable& subject) {
+void si::view::Screen::notify (si::Observable& subject, std::string type) {
 	this->draw();
 }
