@@ -126,10 +126,10 @@ si::Ship::Ship (std::string xmlFile, bool xml) : si::Entity::Entity() {
 	);
 
 	this->bulletTexture = tree.get("player.<xmlattr>.bullettexture", std::string("assets/images/laser.png"));
-	this->setFireSpeed(attributes.get("firespeed", 500));
+	this->setFireSpeed(tree.get("player.<xmlattr>.firespeed", 500));
 
-	double thrustpowerx = attributes.get("thrustpowerx", 0.4);
-	double thrustpowery = attributes.get("thrustpowery", 0.4);
+	double thrustpowerx = tree.get("player.<xmlattr>.thrustpowerx", 0.4);
+	double thrustpowery = tree.get("player.<xmlattr>.thrustpowery", 0.4);
 	this->setMaxThrust(thrustpowerx, thrustpowery);
 }
 
