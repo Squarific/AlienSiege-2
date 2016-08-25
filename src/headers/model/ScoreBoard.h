@@ -1,6 +1,10 @@
 #ifndef SCOREBOARD_H
 #define SCOREBOARD_H
 
+#include <vector>
+
+#include "Observers.h"
+
 #include <boost/property_tree/ptree.hpp>
 
 namespace pt = boost::property_tree;
