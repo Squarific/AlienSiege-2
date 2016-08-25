@@ -1,6 +1,9 @@
 #ifndef OBSERVERS_H
 #define OBSERVERS_H
 
+#include <vector>
+#include <memory>
+
 namespace si {
 	class Observable;
 
