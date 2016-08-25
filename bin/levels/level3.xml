@@ -1,4 +1,4 @@
-<level width="1024" height="786">
+<level next="levels/level1.xml" width="1024" height="786">
 	<enemies>
 		<enemy x="50" y="50" firespeed="1000" thrustpowerx="0.3" thrustpowery="0.3" bounceoffset="20" bullettexture="assets/images/laser.png">assets/images/enemy.png</enemy>
 		<enemy x="250" y="50" firespeed="1000" thrustpowerx="0.3" thrustpowery="0.3" bounceoffset="20" bullettexture="assets/images/laser.png">assets/images/enemy.png</enemy>
