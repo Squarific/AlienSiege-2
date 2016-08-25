@@ -13,15 +13,14 @@ namespace si {
 		public:
 			ScoreBoard();
 			ScoreBoard(std::string xmlFile);
-			~ScoreBoard();
 
-			load(std::string xmlFile);
-			save(std::string xmlFile);
+			void load(std::string xmlFile);
+			void save(std::string xmlFile);
 
 			pt::ptree getScores();
 
-			add(std::string name, int score);
-			reset();
+			void add(std::string name, int score);
+			void reset();
 
 			// Notify the observers that something about the subject changed
 			virtual void notifyObservers();
