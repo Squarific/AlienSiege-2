@@ -43,6 +43,7 @@ pt::ptree si::model::ScoreBoard::getScores () {
 }
 
 void si::model::ScoreBoard::add(std::string name, int score) {
+	this->scores.push_back(si::model::Score(name, score));
 	this->notifyObservers(std::string("scoreadded"));
 }
 

@@ -2,6 +2,7 @@
 #define SCOREBOARD_H
 
 #include <vector>
+#include <utility>
 
 #include "Observers.h"
 
@@ -11,9 +12,11 @@ namespace pt = boost::property_tree;
 
 namespace si {
 	namespace model {
+		using Score = std::pair<std::string, int>;
+
 		class ScoreBoard : Observable {
 		private:
-			pt::ptree scores;
+			std::vector<Score> scores;
 		public:
 			ScoreBoard();
 			ScoreBoard(std::string xmlFile);
