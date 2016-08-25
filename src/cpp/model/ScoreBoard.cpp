@@ -41,6 +41,6 @@ void si::model::ScoreBoard::notifyObservers () {
 	}
 };
 
-void si::model::Game::registerObserver (std::shared_ptr<si::Observer> observer) {
+void si::model::ScoreBoard::registerObserver (std::shared_ptr<si::Observer> observer) {
 	this->observers.push_back(observer);
 }
