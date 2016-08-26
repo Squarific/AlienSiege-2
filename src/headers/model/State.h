@@ -1,6 +1,8 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include <iostream>
+
 namespace si {
 	namespace model {
 		// This class will keep general state
@@ -14,11 +16,12 @@ namespace si {
 			// These return a bool indicating where we are in that state
 			bool inGame();
 			bool scoreBoardOpen();
+			bool inMenu();
 
 			// This function sets the general state
 			// Possible state values are: 'game', 'menu', 'scores'
 			void setState(std::string state);
-		}
+		};
 	}
 }
 
