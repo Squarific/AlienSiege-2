@@ -6,7 +6,7 @@ namespace si {
 		// This class will keep general state
 		// It will tell us if we are in a game, in the scoreboard or in the menu
 		class State {
-			std::string _state;
+			std::string _state = "menu";
 		public:
 			State();
 
