@@ -4,9 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 si::view::Menu () {
-	if (!this->font.loadFromFile("arial.ttf")) {
-		throw new FontFileException();
-	}
+	throw NotEnoughArgumentsError();
 }
 
 si::view::Menu (sf::RenderWindow* window) {
