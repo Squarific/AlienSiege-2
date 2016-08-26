@@ -3,8 +3,8 @@
 #include "Screen.h"
 #include "PlayerController.h"
 #include "ControllerCollection.h"
-
 #include "ScoreBoard.h"
+#include <SFML/Graphics.hpp>
 
 int main () {
 	// Create the game, scoreboard and menu
@@ -48,6 +48,12 @@ int main () {
 
 	// Run as long as our window is open
 	while (screen.window->isOpen()) {
+		// Lets first check to see if the user wants to quit
+		// Process the quit event, the others are done in a controller
+		sf::Event event;
+		while (screen.window->pollEvent(event))
+			if (event.type == sf::Event::Closed)
+				screen.window->close();
 
 		// If we are in game we will draw that
 		if (generalSate.inGame()) {

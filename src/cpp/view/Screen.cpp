@@ -22,12 +22,6 @@ si::view::Screen::Screen (si::model::Game* game) {
 }
 
 void si::view::Screen::draw () {
-	// Process the quit event, the others are done in a controller
-	sf::Event event;
-	while (this->window->pollEvent(event))
-		if (event.type == sf::Event::Closed)
-			this->window->close();
-
 	// Set this window as the active openGl window
 	this->window->setActive();
 	this->window->clear();
