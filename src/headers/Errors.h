@@ -23,6 +23,7 @@ namespace si {
 	// File errors
 	class FileException : BaseError {};
 	class TextureFileException : FileException {};
+	class FontFileException : FileException {};
 }
 
 #endif /* ERRORS_H */
