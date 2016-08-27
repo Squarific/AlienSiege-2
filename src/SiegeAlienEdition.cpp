@@ -68,7 +68,9 @@ int main () {
 		// If all else fails, just show the menu
 		} else {
 			menuView.draw();
-			menu.update();
 		}
+
+		// Let the menucontroller do its thing
+		menu.update();
 	}
 }
