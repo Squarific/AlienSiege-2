@@ -9,7 +9,7 @@
 
 namespace si {
 	namespace view {
-		class Menu : public Observer {
+		class Menu {
 		public:
 			sf::RenderWindow* window;
 			sf::Font font;
@@ -18,8 +18,6 @@ namespace si {
 			Menu(sf::RenderWindow* window);
 
 			void draw ();
-
-			virtual void notify (si::Observable& subject, std::string type);
 		};
 	}
 }

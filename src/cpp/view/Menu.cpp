@@ -58,7 +58,3 @@ void si::view::Menu::draw () {
 	// End the frame and draw it all
 	this->window->display();
 }
-
-void si::view::Menu::notify (si::Observable& subject, std::string type) {
-
-}
