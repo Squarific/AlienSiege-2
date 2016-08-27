@@ -4,7 +4,11 @@
 #include "PlayerController.h"
 #include "ControllerCollection.h"
 #include "ScoreBoard.h"
+#include "Menu.h"
+#include "State.h"
 #include <SFML/Graphics.hpp>
+
+#include <iostream>
 
 int main () {
 	// Create the game, scoreboard and menu
@@ -40,11 +44,8 @@ int main () {
 	si::model::State generalState = si::model::State();
 
 	// Create a menu controller and view
-	si::controller::Menu menu = si::controller::Menu(generalState, mainGame);
-	si::view::Menu menuView = si::controller::Menu(screen.window);
-
-	// Register our menu controller as an observer
-	menuView.registerObserver(std::shared_ptr<si::view::Menu>(&menuView));
+	si::controller::MenuController menu = si::controller::Menu(generalState, mainGame);
+	si::view::Menu menuView = si::view::Menu(screen.window);
 
 	// Run as long as our window is open
 	while (screen.window->isOpen()) {
@@ -56,17 +57,18 @@ int main () {
 				screen.window->close();
 
 		// If we are in game we will draw that
-		if (generalSate.inGame()) {
+		if (generalState.inGame()) {
 			controllerCollection.update();
 			mainGame->update();
 
 		// Not in game; if the scoreboard is open draw that
-		} else if (state.scoreBoardOpen()) {
-			scoreboardView->draw();
+		} else if (generalState.scoreBoardOpen()) {
+			//scoreboardView->draw();
 
 		// If all else fails, just show the menu
 		} else {
-			menuView->draw();
+			menuView.draw();
+			menu.update();
 		}
 	}
 }
