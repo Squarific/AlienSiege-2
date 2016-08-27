@@ -25,9 +25,9 @@ void si::view::Menu::draw () {
 	this->window->clear();
 
 	std::vector <std::string> options = {
-		"Solo",
-		"Coop",
-		"Scores"
+		"Solo (1)",
+		"Coop (2)",
+		"Scores (s)"
 	};
 
 	float startHeight = options.size() * 2.0f;
