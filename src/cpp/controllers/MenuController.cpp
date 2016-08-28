@@ -38,7 +38,7 @@ void si::controller::MenuController::update () {
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) ||
 		    sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			this->_generalState->setState("score");
+			this->_generalState->setState("scores");
 			return;
 		}
 	}

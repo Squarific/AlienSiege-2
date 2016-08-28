@@ -1,2 +1,6 @@
 <scores>
+	<score>1</score>
+	<score>5</score>
+	<score>3</score>
+	<score name="test">1</score>
 </scores>
