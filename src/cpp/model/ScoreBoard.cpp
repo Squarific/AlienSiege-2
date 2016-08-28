@@ -50,7 +50,7 @@ void si::model::ScoreBoard::save (std::string xmlFile) {
 }
 
 std::vector<si::model::Score> si::model::ScoreBoard::getScores () {
-	
+	return this->scores;
 }
 
 void si::model::ScoreBoard::add(std::string name, int score) {

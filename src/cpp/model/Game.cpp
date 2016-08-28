@@ -239,6 +239,9 @@ void si::model::Game::registerObserver (std::shared_ptr<si::Observer> observer) 
 
 void si::model::Game::clear () {
 	this->objectPointers.clear();
+
+	// Reset the last update time
+	this->stopWatch.getFrames();
 };
 
 std::vector<int> si::model::Game::getWorldSize () {
