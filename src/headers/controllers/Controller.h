@@ -7,7 +7,7 @@
 namespace si {
 	namespace controller {
 
-		class Controller : Observers {
+		class Controller : public Observer {
 		public:
 			Controller();
 

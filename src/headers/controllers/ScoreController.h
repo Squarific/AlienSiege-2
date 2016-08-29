@@ -7,14 +7,18 @@
 #include "ScoreBoard.h"
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 namespace si {
 	namespace controller {
-		class ScoreController : public Controller () {
+		class ScoreController : public Controller {
 		private:
 			si::model::State* _generalState;
 			si::model::Game* _game;
-			si::model::ScoreBoard _scores;
+			si::model::ScoreBoard* _scores;
+
+			std::string _input;
+			int _score = 0;
 
 		public:
 			ScoreController();
@@ -25,7 +29,7 @@ namespace si {
 			virtual void update();
 			virtual void onEvent(sf::Event event);
 			virtual void notify (Observable& subject, std::string type);
-		}
+		};
 	}
 }
 

@@ -1,12 +1,20 @@
-#include "Game.h"
 #include "Entitys.h"
-#include "Screen.h"
-#include "ControllerCollection.h"
-#include "ScoreBoard.h"
-#include "Menu.h"
+
+//Controllers
+#include "ScoreController.h"
 #include "MenuController.h"
+#include "ControllerCollection.h"
+
+// Models
+#include "Game.h"
+#include "Menu.h"
 #include "State.h"
+#include "ScoreBoard.h"
+
+// Views
 #include "ScoreBoardView.h"
+#include "Screen.h"
+
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
@@ -27,17 +35,22 @@ int main () {
 	si::controller::ControllerCollection controllerCollection =
 		si::controller::ControllerCollection();
 
-	// Create a menu controller
-	
-
-	// Create a shared pointer for the menu controller
+	// Create a shared pointer of the menu controller
 	std::shared_ptr<si::controller::Controller> menuController = 
 		std::shared_ptr<si::controller::Controller>(
 			new si::controller::MenuController(&generalState,
 			                                   mainGame,
 			                                   &ingameControllerCollection));
 
+	// Create a shared pointer of the score controller
+	std::shared_ptr<si::controller::Controller> scoreController = 
+		std::shared_ptr<si::controller::Controller>(
+			new si::controller::ScoreController(&generalState,
+			                                    mainGame,
+			                                    &scores));
+
 	controllerCollection.controllers.push_back(menuController);
+	controllerCollection.controllers.push_back(scoreController);
 
 	// Create a game screen, a menuview and a view for the scores
 	si::view::Screen screen(mainGame);

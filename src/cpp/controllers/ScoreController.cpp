@@ -26,21 +26,21 @@ void si::controller::ScoreController::onEvent (sf::Event event) {
 	if (!this->_generalState->inputtingScore()) return;
 
 	if (event.type == sf::Event::TextEntered){
-		if(event.KeyPressed == sf::Keyboard::BackSpace && this->input.size() != 0) {
-			this->input.pop_back();
-		} else if (event.KeyPressed == sf::Keyboard::Return && this->input.size() != 0) {
+		if(event.key.code == sf::Keyboard::BackSpace && this->_input.size() != 0) {
+			this->_input.pop_back();
+		} else if (event.key.code == sf::Keyboard::Return && this->_input.size() != 0) {
 			this->_generalState->setState("scores");
-			this->scores->add(this->input, this->score);
-		} else if (event.text) {
-			this->input += std::string(event.text);
+			this->_scores->add(this->_input, this->_score);
+		} else {
+			this->_input += sf::String(event.text.unicode);
 		}
 	}
 }
 
 void si::controller::ScoreController::notify (Observable& subject, std::string type) {
 	if (type == std::string("gameover")) {
-		this->input = std::string("");
-		this->score = this->_game->score;
+		this->_input = std::string("");
+		this->_score = this->_game->score;
 		this->_generalState->setState("scoreinput");
 	}
 }
