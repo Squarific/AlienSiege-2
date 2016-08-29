@@ -155,10 +155,12 @@ void si::Ship::update (int deltaTime, si::model::Game& game) {
 	std::vector<int> worldSize = game.getWorldSize();
 	if (this->position.at(0) < 0 || this->position.at(0) > worldSize.at(0)) {
 		game.removeEntity(this);
+		game.gameOver();
 	}
 
 	if (this->position.at(1) < 0 || this->position.at(1) > worldSize.at(1)) {
 		game.removeEntity(this);
+		game.gameOver();
 	}
 
 	// ===== BULLET FIREING =====
