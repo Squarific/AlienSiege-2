@@ -213,6 +213,7 @@ void si::Ship::collision (Bullet& with, si::model::Game& game) {
 	if (with.isOwner(this)) return;
 
 	game.removeEntity(this);
+	game.gameOver();
 }
 
 si::EnemyShip::EnemyShip () {

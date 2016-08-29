@@ -13,3 +13,7 @@ void si::controller::Controller::update () {
 void si::controller::Controller::onEvent (sf::Event event) {
 	
 }
+
+void si::controller::Controller::notify (Observable& subject, std::string type) {
+	
+}

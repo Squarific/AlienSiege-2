@@ -17,9 +17,10 @@ namespace si {
 			bool inGame();
 			bool scoreBoardOpen();
 			bool inMenu();
+			bool inputtingScore();
 
 			// This function sets the general state
-			// Possible state values are: 'game', 'menu', 'scores'
+			// Possible state values are: 'game', 'menu', 'scores', 'scoreinput'
 			void setState(std::string state);
 		};
 	}
