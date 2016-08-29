@@ -11,9 +11,12 @@ namespace si {
 		class PlayerController : public Controller {
 		public:
 			std::shared_ptr< si::Ship > target;
+			sf::Keyboard::Key left;
+			sf::Keyboard::Key right;
+			sf::Keyboard::Key fire;
 
 			PlayerController();
-			PlayerController(std::shared_ptr< si::Ship > target);
+			PlayerController(std::string xmlFile, std::shared_ptr< si::Ship > target);
 
 			virtual void update();
 			virtual void onEvent(sf::Event event);

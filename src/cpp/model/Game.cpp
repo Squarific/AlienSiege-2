@@ -36,7 +36,6 @@ si::model::Game::Game (std::string xmlFile) {
 	}
 
 	this->laggTimesTreshhold = tree.get("game.laggtimestreshhold", 5);
-	
 }
 
 void si::model::Game::loadLevel (std::string filename) {

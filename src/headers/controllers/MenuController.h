@@ -15,6 +15,7 @@ namespace si {
 			si::controller::ControllerCollection* _controllerCollection;
 
 			void _setupSoloGame();
+			void _setupCoopGame();
 		public:
 			// The contructor without arguments throws a NotEnoughArgumentsError
 			MenuController();
