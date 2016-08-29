@@ -73,3 +73,7 @@ void si::controller::MenuController::_setupSoloGame () {
 
 	this->_mainGame->loadLevel(std::string("levels/level1.xml"));
 }
+
+void si::controller::MenuController::onEvent (sf::Event event) {
+
+}

@@ -4,10 +4,11 @@
 #include "State.h"
 #include "Game.h"
 #include "ControllerCollection.h"
+#include "Controller.h"
 
 namespace si {
 	namespace controller {
-		class MenuController {
+		class MenuController : public Controller {
 		private:
 			si::model::State* _generalState;
 			si::model::Game* _mainGame;
@@ -23,7 +24,8 @@ namespace si {
 
 			// Check for user input
 			// Should be called about every frame
-			void update();
+			virtual void update();
+			virtual void onEvent(sf::Event event);
 		};
 	}
 }

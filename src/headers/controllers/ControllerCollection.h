@@ -16,6 +16,7 @@ namespace si {
 
 			// Let all controllers update
 			void update();
+			void onEvent(sf::Event event);
 		};
 
 	}

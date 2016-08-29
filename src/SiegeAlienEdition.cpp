@@ -19,14 +19,25 @@ int main () {
 
 	// Create a controller collection
 	// We use this to update all controllers if the game is open
-	si::controller::ControllerCollection controllerCollection = 
+	si::controller::ControllerCollection ingameControllerCollection = 
+		si::controller::ControllerCollection();
+
+	// Create the controller collection for the general stuff
+	// These will receive all events and wil update every iteration
+	si::controller::ControllerCollection controllerCollection =
 		si::controller::ControllerCollection();
 
 	// Create a menu controller
-	si::controller::MenuController menu =
-		si::controller::MenuController(&generalState,
-	                                   mainGame,
-	                                   &controllerCollection);
+	
+
+	// Create a shared pointer for the menu controller
+	std::shared_ptr<si::controller::Controller> menuController = 
+		std::shared_ptr<si::controller::Controller>(
+			new si::controller::MenuController(&generalState,
+			                                   mainGame,
+			                                   &ingameControllerCollection));
+
+	controllerCollection.controllers.push_back(menuController);
 
 	// Create a game screen, a menuview and a view for the scores
 	si::view::Screen screen(mainGame);
@@ -38,15 +49,24 @@ int main () {
 	// This is the main loop
 	while (screen.window->isOpen()) {
 		// Lets first check to see if the user wants to quit
-		// Process the quit event, the others are done in a controller
+		// Process the quit event and user text input
+		// Other input is done in the controllers
+		bool closed = false;
 		sf::Event event;
-		while (screen.window->pollEvent(event))
-			if (event.type == sf::Event::Closed)
+		while (screen.window->pollEvent(event)) {
+			if (event.type == sf::Event::Closed) {
 				screen.window->close();
+				closed = true;
+			}
+
+			controllerCollection.onEvent(event);
+		}
+
+		if (closed) break;
 
 		// If we are in game we will draw that
 		if (generalState.inGame()) {
-			controllerCollection.update();
+			ingameControllerCollection.update();
 			mainGame->update();
 
 		// Not in game; if the scoreboard is open draw that
@@ -59,6 +79,6 @@ int main () {
 		}
 
 		// Let the menucontroller do its thing
-		menu.update();
+		controllerCollection.update();
 	}
 }

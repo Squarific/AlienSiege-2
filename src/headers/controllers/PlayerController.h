@@ -16,6 +16,7 @@ namespace si {
 			PlayerController(std::shared_ptr< si::Ship > target);
 
 			virtual void update();
+			virtual void onEvent(sf::Event event);
 		};
 
 	}

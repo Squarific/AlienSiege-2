@@ -9,3 +9,9 @@ void si::controller::ControllerCollection::update () {
 		controllerPtr->update();
 	}
 }
+
+void si::controller::ControllerCollection::onEvent (sf::Event event) {
+	for (auto& controllerPtr : this->controllers) {
+		controllerPtr->onEvent(event);
+	}
+}

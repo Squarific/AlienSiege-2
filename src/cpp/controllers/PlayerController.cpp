@@ -22,3 +22,7 @@ void si::controller::PlayerController::update () {
 
 	this->target->fireing = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 }
+
+void si::controller::PlayerController::onEvent (sf::Event event) {
+
+}
