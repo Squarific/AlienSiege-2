@@ -54,10 +54,6 @@ void si::view::ScoreBoardView::draw () {
 		name.setColor(sf::Color::White);
 		name.setStyle(sf::Text::Regular);
 		name.setFont(this->font);
-
-		//center text
-		sf::FloatRect textBounds = name.getLocalBounds();
-
 		name.setPosition(sf::Vector2f(0U, this->window->getSize().y) +
 		                 sf::Vector2f(2 * textSize, -startHeight * textSize + 2 * textSize * counter));
 
@@ -65,15 +61,10 @@ void si::view::ScoreBoardView::draw () {
 
 		sf::Text scoreText;
 		scoreText.setString(std::to_string(score.second));
-
 		scoreText.setCharacterSize(textSize);
 		scoreText.setColor(sf::Color::White);
 		scoreText.setStyle(sf::Text::Regular);
 		scoreText.setFont(this->font);
-
-		//center text
-		sf::FloatRect scoreBounds = scoreText.getLocalBounds();
-
 		scoreText.setPosition(sf::Vector2f(this->window->getSize()) +
 		                      sf::Vector2f(-2 * textSize, -startHeight * textSize + 2 * textSize * counter));
 
