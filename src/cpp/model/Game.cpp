@@ -195,6 +195,11 @@ void si::model::Game::_handleFinish () {
 
 void si::model::Game::nextLevel () {
 	this->loadLevel(this->nextLevelFileName);
+	this->score++;
+}
+
+void si::model::Game::gameOver () {
+	this->notifyObservers(std::string("gameover"));
 }
 
 void si::model::Game::addEntity (std::shared_ptr< Entity > entityPtr) {
@@ -242,6 +247,8 @@ void si::model::Game::clear () {
 
 	// Reset the last update time
 	this->stopWatch.getFrames();
+
+	this->score = 0;
 };
 
 std::vector<int> si::model::Game::getWorldSize () {

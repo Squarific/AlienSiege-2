@@ -45,11 +45,13 @@ namespace si {
 			int laggTimesTreshhold = 0;
 
 		public:
-
+			int score = 0;
 			std::string nextLevelFileName;
 
 			// Load the next xml level
 			void nextLevel();
+
+			// This function should be called if the game should end
 			void gameOver();
 
 			Game();
