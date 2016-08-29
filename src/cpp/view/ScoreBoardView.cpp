@@ -25,7 +25,7 @@ void si::view::ScoreBoardView::draw () {
 
 	// Draw the return text
 	sf::Text text;
-	text.setString("Return the the menu using (esc)");
+	text.setString("Return to the menu using (esc)");
 
 	text.setCharacterSize(24);
 	text.setColor(sf::Color::White);
