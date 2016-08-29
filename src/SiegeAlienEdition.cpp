@@ -14,10 +14,12 @@
 // Views
 #include "ScoreBoardView.h"
 #include "Screen.h"
+#include "ScoreInputView.h"
 
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
+#include <memory>
 
 int main () {
 	// Create the game, scoreboard and state
@@ -43,20 +45,24 @@ int main () {
 			                                   &ingameControllerCollection));
 
 	// Create a shared pointer of the score controller
+	si::controller::ScoreController* scoreControllerPtr =
+		new si::controller::ScoreController(&generalState, mainGame, &scores);
+
 	std::shared_ptr<si::controller::Controller> scoreController = 
-		std::shared_ptr<si::controller::Controller>(
-			new si::controller::ScoreController(&generalState,
-			                                    mainGame,
-			                                    &scores));
+		std::shared_ptr<si::controller::Controller>(scoreControllerPtr);
 
 	controllerCollection.controllers.push_back(menuController);
 	controllerCollection.controllers.push_back(scoreController);
+
+	// Let the scorecontroller listen to game overs
+	mainGame->registerObserver(scoreController);
 
 	// Create a game screen, a menuview and a view for the scores
 	si::view::Screen screen(mainGame);
 	mainGame->registerObserver(std::shared_ptr<si::view::Screen>(&screen));
 	si::view::Menu menuView = si::view::Menu(screen.window);
 	si::view::ScoreBoardView scoreBoardView = si::view::ScoreBoardView(screen.window, &scores);
+	si::view::ScoreInputView scoreInputView = si::view::ScoreInputView(screen.window, scoreControllerPtr);
 
 	// Run as long as our window is open
 	// This is the main loop
@@ -87,6 +93,9 @@ int main () {
 			scoreBoardView.draw();
 
 		// If all else fails, just show the menu
+		} else if (generalState.inputtingScore()) {
+			scoreInputView.draw();
+
 		} else {
 			menuView.draw();
 		}

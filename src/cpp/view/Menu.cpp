@@ -14,7 +14,7 @@ si::view::Menu::Menu () {
 si::view::Menu::Menu (sf::RenderWindow* window) {
 	this->window = window;
 
-	if (!this->font.loadFromFile("fonts/arial.ttf")) {
+	if (!this->font.loadFromFile("fonts/NotoSans-Regular.ttf")) {
 		throw new FontFileException();
 	}
 }

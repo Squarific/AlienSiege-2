@@ -17,10 +17,10 @@ namespace si {
 			si::model::Game* _game;
 			si::model::ScoreBoard* _scores;
 
-			std::string _input;
-			int _score = 0;
-
 		public:
+			std::string input;
+			int score = 0;
+
 			ScoreController();
 			ScoreController(si::model::State* generalState, si::model::Game* game, si::model::ScoreBoard* scores);
 

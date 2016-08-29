@@ -13,7 +13,7 @@ si::view::ScoreBoardView::ScoreBoardView (sf::RenderWindow* window, si::model::S
 	this->window = window;
 	this->scoreboard = scoreboard;
 
-	if (!this->font.loadFromFile("fonts/arial.ttf")) {
+	if (!this->font.loadFromFile("fonts/NotoSans-Regular.ttf")) {
 		throw new FontFileException();
 	}
 }
