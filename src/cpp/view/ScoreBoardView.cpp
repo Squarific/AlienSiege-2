@@ -53,7 +53,7 @@ void si::view::ScoreBoardView::draw () {
 		name.setColor(sf::Color::White);
 		name.setStyle(sf::Text::Regular);
 		name.setFont(this->font);
-		name.setPosition(sf::Vector2f(2 * textSize, 2 * textSize * counter));
+		name.setPosition(sf::Vector2f(2 * textSize, 3 * textSize + 2 * textSize * counter));
 
 		this->window->draw(name);
 
@@ -64,7 +64,7 @@ void si::view::ScoreBoardView::draw () {
 		scoreText.setStyle(sf::Text::Regular);
 		scoreText.setFont(this->font);
 		scoreText.setPosition(sf::Vector2f(this->window->getSize().x, 0) +
-		                      sf::Vector2f(-2 * textSize, -startHeight * textSize + 2 * textSize * counter));
+		                      sf::Vector2f(-2 * textSize, 3 * textSize + 2 * textSize * counter));
 
 		this->window->draw(scoreText);
 		counter++;

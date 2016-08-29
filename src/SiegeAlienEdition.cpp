@@ -103,4 +103,6 @@ int main () {
 		// Let the menucontroller do its thing
 		controllerCollection.update();
 	}
+
+	scores.save("scores.xml");
 }

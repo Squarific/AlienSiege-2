@@ -1,6 +1,2 @@
-<scores>
-	<score>1</score>
-	<score>5</score>
-	<score>3</score>
-	<score name="test">1</score>
-</scores>
+<?xml version="1.0" encoding="utf-8"?>
+<scores><score name="Filip">0</score></scores>
