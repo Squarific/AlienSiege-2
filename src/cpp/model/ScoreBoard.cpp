@@ -25,6 +25,7 @@ void si::model::ScoreBoard::load (std::string xmlFile) {
 		pt::read_xml(xmlFile, tree);
 	} catch(std::exception const& error) {
 		std::cerr << "Can't load scores file '" << xmlFile << "'. Error: " << error.what();
+		throw si::FileException();
 	}
 
 	BOOST_FOREACH(pt::ptree::value_type &v, tree.get_child("scores")) {
@@ -46,7 +47,12 @@ void si::model::ScoreBoard::save (std::string xmlFile) {
 		tree.add_child("scores.score", scoreNode);
 	}
 
-    pt::write_xml(xmlFile, tree);
+	try {
+		pt::write_xml(xmlFile, tree);
+	} catch(std::exception const& error) {
+		std::cerr << "Can't save scores file '" << xmlFile << "'. Error: " << error.what();
+		throw si::FileException();
+	}
 }
 
 std::vector<si::model::Score> si::model::ScoreBoard::getScores () {

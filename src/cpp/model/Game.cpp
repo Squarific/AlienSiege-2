@@ -33,6 +33,7 @@ si::model::Game::Game (std::string xmlFile) {
 		pt::read_xml(xmlFile, tree);
 	} catch(std::exception const& error) {
 		std::cerr << "Can't load game file '" << xmlFile << "'. Error: " << error.what();
+		throw si::FileException();
 	}
 
 	this->laggTimesTreshhold = tree.get("game.laggtimestreshhold", 5);
@@ -46,6 +47,7 @@ void si::model::Game::loadLevel (std::string filename) {
 		pt::read_xml(filename, tree);
 	} catch(std::exception const& error) {
 		std::cerr << "Can't load level file '" << filename << "'. Error: " << error.what();
+		throw si::FileException();
 	}
 
 	this->nextLevelFileName = tree.get("level.<xmlattr>.next", std::string());

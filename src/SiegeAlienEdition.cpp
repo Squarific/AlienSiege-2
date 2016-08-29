@@ -1,4 +1,5 @@
 #include "Entitys.h"
+#include "Errors.h"
 
 //Controllers
 #include "ScoreController.h"
@@ -21,10 +22,23 @@
 #include <iostream>
 #include <memory>
 
+// Error codes
+// 0 - success
+// 1 - File error, check the error logs for more info
+
 int main () {
 	// Create the game, scoreboard and state
-	si::model::Game* mainGame = new si::model::Game("game.xml");
-	si::model::ScoreBoard scores = si::model::ScoreBoard("scores.xml");
+	si::model::Game* mainGame;
+	si::model::ScoreBoard scores;
+	
+	try {
+		mainGame = new si::model::Game("game.xml");
+		scores = si::model::ScoreBoard("scores.xml");
+	} catch (si::FileException const& fileError) {
+		std::cerr << fileError.what() << std::endl;
+		return 1;
+	}
+
 	si::model::State generalState = si::model::State();
 
 	// Create a controller collection
@@ -104,5 +118,12 @@ int main () {
 		controllerCollection.update();
 	}
 
-	scores.save("scores.xml");
+	try {
+		scores.save("scores.xml");
+	} catch (si::FileException const& fileError) {
+		std::cerr << fileError.what() << std::endl;
+		return 1;
+	}
+
+	return 0;
 }
