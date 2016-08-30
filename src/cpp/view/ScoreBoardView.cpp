@@ -35,7 +35,7 @@ void si::view::ScoreBoardView::draw () {
 	this->window->draw(text);
 
 	std::vector <si::model::Score> scores = this->scoreboard->getScores();
-	std::sort(scores.begin(), scores.end(), [](si::model::Score& a, si::model::Score& b) {
+	std::sort(scores.begin(), scores.end(), [](const si::model::Score& a, const si::model::Score& b) {
 		return a.second > b.second;
 	});
 
